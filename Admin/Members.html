@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Library App</title>
+    <link rel="stylesheet" href="/styles/members.css"/>
+</head>
+<body>
+    <div class="app">
+        <aside class="sidebar">
+            <h2>📚 Library App</h2>
+            <ul>
+            <li class="sidebar-link active"><a href="index.html">Dashboard</a></li>
+            <li class="sidebar-link"><a href="Members.html">Members</a></li>
+            <li class="sidebar-link"><a href="add-books.html">Add Books</a></li>
+            <li class="sidebar-link"><a href="check-out-books.html">Check-out Books</a></li>
+            <li class="sidebar-link"><a href="settings.html">Settings</a></li>
+            <!-- <li class="sidebar-link"><a href="help.html">Help</a></li> -->
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <header>
+                <input type="text" placeholder="Search Ex: ISBN, Title, Author, Member, etc">
+                <div class="controls">
+                    <select>
+                        <option>Last 6 months</option>
+                    </select>
+                    <div class="profile">Allison</div>
+                </div>
+            </header>
+
+            <section class="member-section">
+                <div class="member-header">
+                    <h3>Members</h3>
+                    <div class="member-actions">
+                        <input type="text" placeholder="Search Member">
+                        <button class="green">Add Members</button>
+                        <button>Import</button>
+                    </div>
+                </div>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Member ID</th>
+                            <th>Register ID</th>
+                            <th>Member</th>
+                            <th>Email ID</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="memberTableBody">
+                        <!-- Populated by JS -->
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+    
+<script>
+  // ...existing theme code...
+
+  // Highlight active sidebar link
+  document.addEventListener('DOMContentLoaded', function() {
+    const links = document.querySelectorAll('.sidebar-link a');
+    links.forEach(link => {
+      if (window.location.pathname.endsWith(link.getAttribute('href'))) {
+        link.parentElement.classList.add('active');
+      } else {
+        link.parentElement.classList.remove('active');
+      }
+    });
+  });
+</script>
+    <script src="/scripts/members.js"></script>
+</body>
+</html>
