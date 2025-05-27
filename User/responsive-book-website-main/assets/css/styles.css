@@ -341,21 +341,26 @@ nav__logo i{
 .home__swiper{
   margin: initial;
 }
+
 .home__container{
   padding-top:2rem;
   row-gap:2.5rem
 }
+
 .home__data{
-  /* text-align: center; */
+  text-align: center;
 }
+
 .home__title{
   font-size: var(--biggest-font-size);
   margin-bottom: 1rem;
 }
+
 .home__description{
   margin-bottom: 2rem;
 }
-.home_-images{
+
+.home__images{
   display: grid;
 }
 .home__article,
@@ -491,7 +496,7 @@ nav__logo i{
   display: flex;
   justify-content: center;
 }
-.discount__img-1
+.discount__img-1,
 .discount__img-2{
   width:170px;
 }
@@ -513,7 +518,7 @@ nav__logo i{
   transition: border .4s, background-color .4s;
 }
 .new__card:hover{
-  border-color: var(--text-color);
+  border-color:2px solid var(--text-color);
 }
 .new__img{
   width: 100px;

@@ -3,14 +3,14 @@ const searchButton = document.getElementById('search-button'),
       searchClose = document.getElementById('search-close'),
       searchContent = document.getElementById('search-content'); // Fixed typo
 
-/* Menu show */
+/* search show */
 if (searchButton) {
     searchButton.addEventListener('click', () => {
         searchContent.classList.add('show-search');
     });
 }
 
-/* Menu hidden */
+/* search hidden */
 if (searchClose) {
     searchClose.addEventListener('click', () => {
         searchContent.classList.remove('show-search');
@@ -44,10 +44,10 @@ if (loginClose) {
 /*=============== HOME SWIPER ===============*/
 let swiperHome = new Swiper('.home__swiper', {
     loop: true,
-    spaceBetween: 16,
+    spaceBetween: -24,
     grabCursor: true,
-    slidesPerView: auto,
-    centeredSlides: true,
+    slidesPerView:'auto',
+    centeredSlides: 'auto',
 
     autoplay: {
         delay: 3000,
@@ -57,7 +57,7 @@ let swiperHome = new Swiper('.home__swiper', {
 
     breakpoints: {
         1220: {
-            spaceBetween: 24,
+            spaceBetween: -32,
         }
     }
 });
@@ -69,7 +69,7 @@ let swiperFeatured = new Swiper('.featured__swiper', {
     spaceBetween: 16,
     grabCursor: true,
     slidesPerView: 'auto',
-    centeredSlides: true,
+    centeredSlides: 'auto',
 
             
     navigation: {
@@ -87,20 +87,18 @@ let swiperFeatured = new Swiper('.featured__swiper', {
 
 
 /*=============== NEW SWIPER ===============*/
-document.addEventListener('DOMContentLoaded', () => {
-    let swiperNew = new Swiper('.new__swiper', {
-        loop: true,
-        spaceBetween: 16,
-        slidesPerView: 'auto',
-        
-        breakpoints: {
-            1150: {
-                slidesPerView: 4,
-            }
-        }
-    });
-});
+let swiperNew = new Swiper('.new__swiper', {
+    loop: true,
+    spaceBetween: 16,
+    slidesPerView: 'auto',
 
+    breakpoints: {
+        1150: {
+            slidesPerView: 3,
+             centeredSlides: false,
+        }
+    }
+});
 
 /*=============== TESTIMONIAL SWIPER ===============*/
 let swiperTestimonial = new Swiper('.testimonial__swiper', {
@@ -120,11 +118,11 @@ let swiperTestimonial = new Swiper('.testimonial__swiper', {
 
 /*=============== SHOW SCROLL UP ===============*/ 
 const scrollUp = () =>{
-    const scrollUp = document.getElementById('scroll-up');
-    if (this.scrollY >= 350) scrollUp.classList.add('show-scroll');
-    else scrollUp.classList.remove('show-scroll');
+    const scrollUp = document.getElementById('scroll-up')
+    this.scrollY >= 350 ? scrollUp.classList.add('show-scroll')
+    : scrollUp.classList.remove('show-scroll');
 }
-
+window.addEventListener('scroll', scrollUp);
 /*=============== SCROLL SECTIONS ACTIVE LINK ===============*/
 
 
