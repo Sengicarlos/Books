@@ -537,26 +537,171 @@ nav__logo i{
   text-decoration: line-through;
 }
 
-.new__star{
+.new__stars{
   color:var(--first-color)
 }
+.new__swiper:nth-child(1){
+  margin-bottom: 2rem;
+}
 /*=============== JOIN ===============*/
+.join__container{
+  position: relative;
+  padding-block:3rem;
+}
+.join__bg{
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
 
+.join__data{
+  position: relative;
+}
+.join__title{
+  color: var(--white-color);
+}
+.join__form{
+  display: grid;
+  row-gap:1rem
+}
+.join__input{
+  padding:1.25rem 1rem;
+  background-color:var(--body-color);
+  color: var(--title-color);
+  transition: background-color .4s;
+}
+.join_-input::placeholder{
+  color:var(--text-color);
+}
+.join__button{
+  padding: 1.25rem;
+  cursor: pointer;
+}
 
 /*=============== TESTIMONIAL ===============*/
+.testimonial__card{
+  text-align: center;
+  background-color: var(--container-color);
+  padding: 2rem 3rem 2.5rem;
+  border:2px solid var(--border-color);
+  transition: border .4s, background-color .4s;
+}
+.testimonial__img{
+  width: 100px;
+  border-radius: 50%;
+  margin: 0 auto 1rem;
 
-
+}
+.testimonial__title{
+  font-size: var(--h2-font-size);
+  margin-bottom: .75rem;
+}
+.testimonial__description{
+  font-size: var(--small-font-size);
+  margin-bottom: 1.5rem;
+}
+.testimonial__stars{
+  color:var(--first-color);
+}
 /*=============== FOOTER ===============*/
+.footer{
+  padding-block: 4rem 6rem;
+}
 
+.footer__container{
+  row-gap:3rem ;
+}
+.footer__logo{
+  display: inline-flex;
+  align-items: center;
+  column-gap: .5rem;
+  color: var(--first-color);
+  font-weight: var(--font-medium);  
+  font-size: var(--h3-font-size);
+  font-family: var(--second-font);
+  margin-bottom: 1.25rem;
+}
+.footer__logo i{
+  font-size: 1.25rem;
+}
+.footer__data{
+  grid-template-columns: repeat(2,max-content);
+  gap: 3rem 2rem;
+}
+.footer__title{
+  font-size: var(--h3-font-size);
+  margin-bottom: 1.25rem;
+}
+.footer__links{
+  display: grid;
+  row-gap: .5rem;
+}
+.footer__link{
+  color: var(--text-color);
+  transition: color .4s;
+}
+.footer__link:hover{
+  color: var(--first-color);
+}
+.footer__info{
+  font-style: normal;
+}
+.footer__social{
+  display: flex;
+  column-gap: 1.25rem;
 
+}
+.footer__social-link{
+  font-size: 1.25rem;
+  color: var(--first-color);
+}
+.footer__copy{
+  display: block;
+  margin-top: 5rem;
+  text-align: center;
+  font-size: var(--smaller-font-size);
+}
 /*=============== SCROLL BAR ===============*/
+::-webkit-scrollbar{
+  width: .6rem;
+  border-radius: .5rem;
+  background-color: hsl(230,16%,85%);
+}
 
+::-webkit-scrollbar-thumb{
+  border-radius: .5rem;
+  background-color: hsl(230,16%,65%);
+}
+::-webkit-scrollbar-thumb:hover{
+  background-color: hsl(230,16%,55%);
+}
 
 /*=============== SCROLL UP ===============*/
-
+.scrollup{
+  position: fixed;
+  right: 1rem;
+  bottom: -50%;
+  background-color: var(--container-color);
+  box-sizing: 0 2px 8px hsla(0, 0%, 0%, .1);
+  display: inline-flex;
+  padding: 6px;
+  font-size: 1.25rem;
+  color: var(--title-color);
+  z-index: var(--z-tooltip);
+  transition: bottom .4s, background-color .4s;
+}
+.scrollup:hover{
+  transform: translateY(-.5rem);
+}
 
 /* Show Scroll Up */
-
+.show-scroll{
+  bottom:6rem;
+}
 
 /*=============== BREAKPOINTS ===============*/
 /* For small devices */

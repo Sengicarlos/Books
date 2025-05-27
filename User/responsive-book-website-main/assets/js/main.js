@@ -44,7 +44,7 @@ if (loginClose) {
 /*=============== HOME SWIPER ===============*/
 let swiperHome = new Swiper('.home__swiper', {
     loop: true,
-    spaceBetween: -24,
+    spaceBetween: 16,
     grabCursor: true,
     slidesPerView: auto,
     centeredSlides: true,
@@ -57,7 +57,7 @@ let swiperHome = new Swiper('.home__swiper', {
 
     breakpoints: {
         1220: {
-            spaceBetween: -32,
+            spaceBetween: 24,
         }
     }
 });
@@ -66,7 +66,7 @@ let swiperHome = new Swiper('.home__swiper', {
 /*=============== FEATURED SWIPER ===============*/
 let swiperFeatured = new Swiper('.featured__swiper', {
     loop: true,
-    spaceBetween: -24,
+    spaceBetween: 16,
     grabCursor: true,
     slidesPerView: 'auto',
     centeredSlides: true,
@@ -90,7 +90,7 @@ let swiperFeatured = new Swiper('.featured__swiper', {
 document.addEventListener('DOMContentLoaded', () => {
     let swiperNew = new Swiper('.new__swiper', {
         loop: true,
-        spaceBetween: -24,
+        spaceBetween: 16,
         slidesPerView: 'auto',
         
         breakpoints: {
@@ -103,10 +103,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 /*=============== TESTIMONIAL SWIPER ===============*/
+let swiperTestimonial = new Swiper('.testimonial__swiper', {
+    loop: true,
+    spaceBetween: 16,
+    grabCursor: true,
+    slidesPerView: 'auto',
+    centeredSlides: true,
 
+    breakpoints: {
+        1150: {
+            slidesPerView: 3,
+             centeredSlides: false,
+        }
+    }
+});
 
 /*=============== SHOW SCROLL UP ===============*/ 
-
+const scrollUp = () =>{
+    const scrollUp = document.getElementById('scroll-up');
+    if (this.scrollY >= 350) scrollUp.classList.add('show-scroll');
+    else scrollUp.classList.remove('show-scroll');
+}
 
 /*=============== SCROLL SECTIONS ACTIVE LINK ===============*/
 
