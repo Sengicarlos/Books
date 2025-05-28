@@ -102,7 +102,13 @@ img {
 
 /*=============== THEME ===============*/
 /*========== Variables Dark theme ==========*/
-
+body.dark-theme{
+  --title-color: hsl(230, 48%, 85%);
+  --text-color: hsl(230, 16%, 70%);
+  --border-color: hsl(230, 12%, 18%);
+  --body-color: hsl(230, 12%, 8%);
+  --container-color: hsl(230, 12%, 12%);
+}
 
 /*========== 
 	Color changes in some parts of 
@@ -612,6 +618,40 @@ nav__logo i{
 .testimonial__stars{
   color:var(--first-color);
 }
+/*============== chatboot=============== */
+.chatbot {
+    position: fixed;
+    bottom: 1rem;
+    right: 2rem;
+    z-index: 1000;
+}
+
+.chatbot__toggle {
+    background-color: var(--first-color);
+    color: var(--white-color);
+    border: none;
+    border-radius: 50%;
+    padding: 1rem;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.chatbot__content {
+    display: none;
+    position: absolute;
+    bottom: 4rem;
+    right: 0;
+    width: 300px;
+    background-color: var(--container-color);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.chatbot__content.active {
+    display: block;
+}
+
 /*=============== FOOTER ===============*/
 .footer{
   padding-block: 4rem 6rem;
@@ -792,7 +832,7 @@ nav__logo i{
     justify-content: center;
     column-gap: 5rem;
   }
-  .footer{
+  .footer__container{
     grid-template-columns: repeat(2,max-content);
     justify-content: space-between;
   }
@@ -887,6 +927,10 @@ nav__logo i{
   .testimonial__description{
     font-size: var(--normal-font-size);
   }
+  .chatbot {
+    right: 6rem;
+    bottom: 2.5rem;
+  }
   .footer{
     padding-block: 6rem 3rem;
   }
@@ -937,4 +981,5 @@ nav__logo i{
   .home__img{
     width: 290px;
   }
+
 }
