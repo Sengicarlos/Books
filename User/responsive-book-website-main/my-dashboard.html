@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Dashboard</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/dashboard.css">
+    <link rel="stylesheet" href="assets/css/my-dashboard.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body>
+<!--==================== HEADER ====================-->
+<header class="header" id="header">
+    <nav class="nav container">
+        <a href="index.html" class="nav__logo">
+            <i class="ri-book-3-line"></i> Library App
+        </a>
+
+        <div class="nav__menu">
+            <ul class="nav__list">
+                <li class="nav__item">
+                    <a href="index.html" class="nav__link">
+                        <i class="ri-home-line"></i>
+                        <span>Home</span>
+                    </a>
+                </li>
+                <li class="nav__item">
+                    <a href="all-books.html" class="nav__link">
+                        <i class="ri-book-3-line"></i>
+                        <span>All Books</span>
+                    </a>
+                </li>
+                <li class="nav__item">
+                    <a href="my-dashboard.html" class="nav__link active-link">
+                        <i class="ri-price-tag-3-line"></i>
+                        <span>My Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav__item">
+                    <a href="#" class="nav__link">
+                        <i class="ri-bookmark-line"></i>
+                        <span>My Library</span>
+                    </a>
+                </li>
+                <li class="nav__item">
+                    <a href="#" class="nav__link">
+                        <i class="ri-message-3-line"></i>
+                        <span>Testimonial</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="nav__actions">
+            <i class="ri-search-line search-button" id="search-button"></i>
+            <i class="ri-user-line login-button" id="login-button"></i>
+            <i class="ri-moon-line change-theme" id="theme-button"></i>
+        </div>
+    </nav>
+</header>
+
+<!--==================== MAIN ====================-->
+<main class="main">
+    <section class="dashboard section">
+        <h2 class="section__title">My Dashboard</h2>
+        <div class="dashboard__container container grid">
+            <!-- User Statistics -->
+            <div class="dashboard__stats">
+                <div class="stats__card">
+                    <i class="ri-bookmark-line stats__icon"></i>
+                    <h3 class="stats__title">Books Read</h3>
+                    <p class="stats__value">45</p>
+                </div>
+                <div class="stats__card">
+                    <i class="ri-heart-line stats__icon"></i>
+                    <h3 class="stats__title">Favorites</h3>
+                    <p class="stats__value">12</p>
+                </div>
+                <div class="stats__card">
+                    <i class="ri-time-line stats__icon"></i>
+                    <h3 class="stats__title">Reading Hours</h3>
+                    <p class="stats__value">120</p>
+                </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="dashboard__activity">
+                <h3 class="activity__title">Recent Activity</h3>
+                <ul class="activity__list">
+                    <li class="activity__item">
+                        <i class="ri-check-line activity__icon"></i>
+                        Finished reading "Book Title"
+                    </li>
+                    <li class="activity__item">
+                        <i class="ri-heart-line activity__icon"></i>
+                        Added "Book Title" to favorites
+                    </li>
+                    <li class="activity__item">
+                        <i class="ri-time-line activity__icon"></i>
+                        Spent 2 hours reading "Book Title"
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="dashboard__actions">
+                <h3 class="actions__title">Quick Actions</h3>
+                <button class="button actions__button">
+                    <i class="ri-search-line"></i> Search Books
+                </button>
+                <button class="button actions__button">
+                    <i class="ri-heart-line"></i> View Favorites
+                </button>
+                <button class="button actions__button">
+                    <i class="ri-bookmark-line"></i> My Library
+                </button>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!--==================== FOOTER ====================-->
+<footer class="footer">
+    <div class="footer__container container grid">
+        <div>
+            <a href="#" class="footer__logo">
+                <i class="ri-book-3-line">E-Book</i>
+            </a>
+            <p class="footer__description">
+                Find and explore the best <br>
+                eBooks from all your <br>
+                favorite writers.
+            </p>
+        </div>
+        <div class="footer__data grid">
+            <div>
+                <h3 class="footer__title">About</h3>
+                <ul class="footer__links">
+                    <li>
+                        <a href="#" class="footer__link">Awards</a>
+                    </li>
+                    <li>
+                        <a href="#" class="footer__link">FAQs</a>
+                    </li>
+                    <li>
+                        <a href="#" class="footer__link">Privacy policy</a>
+                    </li>
+                    <li>
+                        <a href="#" class="footer__link">Terms of services</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="footer__title">Company</h3>
+                <ul class="footer__links">
+                    <li>
+                        <a href="#" class="footer__link">Blogs</a>
+                    </li>
+                    <li>
+                        <a href="#" class="footer__link">Community</a>
+                    </li>
+                    <li>
+                        <a href="#" class="footer__link">Our team</a>
+                    </li>
+                    <li>
+                        <a href="#" class="footer__link">Help center</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="footer__title">Contact</h3>
+                <ul class="footer__links">
+                    <li>
+                        <address class="footer__info">
+                            Av. Hacienda <br>
+                            Lima 4321, Perú 
+                        </address>
+                    </li>
+                    <li>
+                        <address class="footer__info">
+                            e.book@email.com <br>
+                            0987-654-321
+                        </address>
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="footer__title">Social</h3>
+                <div class="footer__social">
+                    <a href="https://www.facebook.com/" target="_blank" class="footer__social-link">
+                        <i class="ri-facebook-circle-line"></i>
+                    </a>
+                    <a href="https://www.instagram.com/" target="_blank" class="footer__social-link">
+                        <i class="ri-instagram-line"></i>
+                    </a>
+                    <a href="https://twitter.com/" target="_blank" class="footer__social-link">
+                        <i class="ri-twitter-x-line"></i>
+                    </a>
+                </div>   
+            </div>
+        </div>
+    </div>
+    <span class="footer__copy">
+        &#169; All Rights Reserved By Bedimcode
+    </span>
+</footer>
+
+<!--==================== SCROLL UP ====================-->
+<a href="#" class="scrollup" id="scroll-up">
+    <i class="ri-arrow-up-line"></i>
+</a>
+
+<!--=============== MAIN JS ===============-->
+<script src="assets/js/main.js"></script>
+</body>
+</html>
