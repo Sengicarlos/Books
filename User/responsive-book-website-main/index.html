@@ -15,6 +15,7 @@
 
       <!--=============== CSS ===============-->
       <link rel="stylesheet" href="assets/css/styles.css">
+      <link rel="stylesheet" href="assets/css/chatbot.css">
 
       <title>Responsive book website - Bedimcode</title>
    </head>
@@ -38,21 +39,21 @@
                   <li class="nav__item">
                      <a href="#" class="nav__link">
                         <i class="ri-book-3-line"></i>
-                        <span>Featured</span>
+                        <span><a href="all-books.html">All Books</a></span>
                      </a>
                   </li>
 
                   <li class="nav__item">
                      <a href="#" class="nav__link">
                      <i class="ri-price-tag-3-line"></i>
-                        <span>Discount</span>
+                        <span>My Dashboard</span>
                      </a>
                   </li>
 
                   <li class="nav__item">
                      <a href="#" class="nav__link">
                         <i class="ri-bookmark-line"></i>
-                        <span>New Books</span>
+                        <span>My Library</span>
                      </a>
                   </li>
 
@@ -144,25 +145,21 @@
                            <article class="home__article swiper-slide">
                            <img src="assets/img/book-1.png" alt="" class="home__img">
                            <h3 class="home__subtitle">The Book Title</h3>
-                           <span class="home__price">$19.99</span>
                            </article>
 
                            <article class="home__article swiper-slide">
                            <img src="assets/img/book-2.png" alt="" class="home__img">
                            <h3 class="home__subtitle">The Book Title</h3>
-                           <span class="home__price">$19.99</span>
                            </article>
 
                            <article class="home__article swiper-slide" >
                            <img src="assets/img/book-3.png" alt="" class="home__img">
                            <h3 class="home__subtitle">The Book Title</h3>
-                           <span class="home__price">$19.99</span>
                            </article>
 
                            <article class="home__article swiper-slide" >
                            <img src="assets/img/book-4.png" alt="" class="home__img">
                            <h3 class="home__subtitle">The Book Title</h3>
-                           <span class="home__price">$19.99</span>
                            </article>
                      </div>
                   </div>
@@ -764,14 +761,38 @@
          <i class="ri-chat-3-line"></i>
          </button>
          <div class="chatbot__content" id="chatbot-content">
+
          <!-- Chatbot UI goes here -->
-          <section class="chatbot-section">
+
+            <div class="_chatbot">
+               <header>
+                  <h2>Chatbot</h2>
+                  <span class="material-symbols-outlined">close</span>
+               </header>
+               <ul class="chatbox">
+                  <li class="chat incoming">
+                  <span class="material-symbols-outlined">smart_toy</span>
+                  <p>Hi there ✋<br>How can i help you today?</p>
+                  </li>
+                  <!-- <li class="chat outgoing">
+                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                  </li> -->
+               </ul>
+               <div class="chat-input">
+                  <textarea name="" placeholder="Enter a message..." id="" required></textarea>
+                  <span id="send-btn" class="material-symbols-outlined">send</span>
+               </div>
+            </div>
+         </div>
+    </div>
+
+          <!-- <section class="chatbot-section">
             <h2>Need Help Finding a Book?</h2>
             <p>Chat with our assistant to get personalized recommendations!</p>
             <button class="button" id="chatbot-open">Start Chat</button>
             </section>
          </div>
-      </div>
+      </div> -->
       <!--==================== FOOTER ====================-->
       <footer class="footer">
          <div class="footer__container container grid">
