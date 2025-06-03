@@ -984,3 +984,6 @@ nav__logo i{
   }
 
 }
+.main {
+    margin-top: var(--header-height); /* Adjust based on your header height */
+}

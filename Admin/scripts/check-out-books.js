@@ -10,6 +10,40 @@ const books = [
   { id: "#48964", member: "Angel Calzoni", title: "Treasure Island", author: "Angel Calzoni", borrowed: "12/2/2023", returned: "", status: "Available" },
 ];
 
+document.addEventListener('DOMContentLoaded', function () {
+  const checkouts = JSON.parse(localStorage.getItem('checkouts')) || [];
+
+  // Populate checkouts table
+  const bookTableBody = document.getElementById('bookTableBody');
+  bookTableBody.innerHTML = checkouts
+    .map(
+      (checkout) =>
+        `<tr>
+          <td>${checkout.memberId}</td>
+          <td>${checkout.memberName}</td>
+          <td>${checkout.title}</td>
+          <td>${checkout.author}</td>
+          <td>${checkout.borrowedDate}</td>
+          <td>${checkout.returnedDate || 'N/A'}</td>
+          <td>${checkout.status}</td>
+          <td><button class="return-book" data-id="${checkout.id}">Return</button></td>
+        </tr>`
+    )
+    .join('');
+
+  // Return book
+  document.querySelectorAll('.return-book').forEach((button) =>
+    button.addEventListener('click', function () {
+      const id = this.dataset.id;
+      const updatedCheckouts = checkouts.map((checkout) =>
+        checkout.id === parseInt(id) ? { ...checkout, status: 'Returned', returnedDate: new Date().toLocaleDateString() } : checkout
+      );
+      localStorage.setItem('checkouts', JSON.stringify(updatedCheckouts));
+      location.reload();
+    })
+  );
+});
+
 const tableBody = document.getElementById('bookTableBody');
 
 books.forEach(book => {

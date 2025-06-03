@@ -1,7 +1,7 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background-color: #f9f9f9;
+  background-color: hsl(230, 50%, 90%);
 }
 
 .app {
@@ -10,7 +10,7 @@ body {
 
 .sidebar{
   width: 220px;
-  background: white;
+  background: hsl(230, 50%, 90%);
   border-right: 1px solid #e0e0e0;
   padding: 20px;
 }
@@ -29,7 +29,7 @@ body {
 .sidebar .active,
 .sidebar .active a {
     color: white !important;
-    background-color: #60c275;
+    background-color:  hsl(230, 62%, 56%);
     /* padding: 10px 20px; */
     border-radius: 5px;
     display: block;
@@ -47,7 +47,7 @@ body {
 /* Hover effect for sidebar links */
 .sidebar li a:hover{
     color: white;
-    background-color: #60c275;
+    background-color:  hsl(230, 62%, 56%);
     padding-left: 20px;
     border-radius: 5px;
     text-decoration: none;

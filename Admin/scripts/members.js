@@ -1,26 +1,41 @@
-const members = [
-    { id: "#48964", reg: "3234", name: "Alfredo Bergson", email: "Alfredobergson@example.com" },
-    { id: "#48964", reg: "3234", name: "Roger Schleifer", email: "Rogerschleifer@example.com" },
-    { id: "#48964", reg: "3234", name: "Angel Calzoni", email: "Angelcalzoni@example.com" },
-    { id: "#48964", reg: "3234", name: "Roger Schleifer", email: "Rogerschleifer@example.com" },
-    { id: "#48964", reg: "3234", name: "Angel Calzoni", email: "Angelcalzoni@example.com" },
-    { id: "#48964", reg: "3234", name: "Roger Schleifer", email: "Rogerschleifer@example.com" },
-    { id: "#48964", reg: "3234", name: "Angel Calzoni", email: "Angelcalzoni@example.com" },
-];
+document.addEventListener('DOMContentLoaded', function () {
+  const members = JSON.parse(localStorage.getItem('members')) || [];
 
-const tableBody = document.getElementById('memberTableBody');
+  // Populate members table
+  const memberTableBody = document.getElementById('memberTableBody');
+  memberTableBody.innerHTML = members
+    .map(
+      (member) =>
+        `<tr>
+          <td>${member.id}</td>
+          <td>${member.registerId}</td>
+          <td>${member.name}</td>
+          <td>${member.email}</td>
+          <td><button class="delete-member" data-id="${member.id}">Delete</button></td>
+        </tr>`
+    )
+    .join('');
 
-members.forEach(member => {
-    const row = document.createElement('tr');
-    row.innerHTML = `
-        <td>${member.id}</td>
-        <td>${member.reg}</td>
-        <td>${member.name}</td>
-        <td>${member.email}</td>
-        <td class="action-buttons">
-            <button class="edit">Edit</button>
-            <button class="cancel">Cancel</button>
-        </td>
-    `;
-    tableBody.appendChild(row);
+  // Add new member
+  document.querySelector('.member-actions .green').addEventListener('click', function () {
+    const newMember = {
+      id: Date.now(),
+      registerId: `REG${Date.now()}`,
+      name: prompt('Enter member name:'),
+      email: prompt('Enter member email:'),
+    };
+    members.push(newMember);
+    localStorage.setItem('members', JSON.stringify(members));
+    location.reload();
+  });
+
+  // Delete member
+  document.querySelectorAll('.delete-member').forEach((button) =>
+    button.addEventListener('click', function () {
+      const id = this.dataset.id;
+      const updatedMembers = members.filter((member) => member.id !== parseInt(id));
+      localStorage.setItem('members', JSON.stringify(updatedMembers));
+      location.reload();
+    })
+  );
 });
