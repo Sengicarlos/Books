@@ -14,6 +14,7 @@ body {
 
 .container{
   display: flex;
+  width: 100%;
 }
 .sidebar-left{
 width: 220px;
@@ -69,26 +70,25 @@ padding: 0;
 } */
 
 .sidebar {
-  width: 250px;
-  background-color:hsl(230, 50%, 90%);
-  padding: 1em;
-  box-shadow: 2px 0 5px rgba(0,0,0,0.1);
-  /* float: right; */
-}
-
-.search-bar {
   width: 100%;
-  padding: 10px;
-  margin-bottom: 1em;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+  padding: 1em;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center; 
+  gap: 1em; 
+  background-color: #fff;
+  border-radius: 10px;
+  margin-bottom: 2em;
+  position: relative;
 }
 
 .stat-box {
+  flex: 1;
   text-align: center;
   background-color: #f1f1f1;
   padding: 1em;
-  margin-bottom: 1em;
   border-radius: 10px;
 }
 
@@ -110,17 +110,27 @@ padding: 0;
 .overview-stats {
   display: flex;
   gap: 2em;
-  /* box-shadow: 1px 1px 5px rgba(0,0,0,0.1); */
-  /* border: 2px solid black; */
+  text-align: center;
  
 }
 
 .Totalbm{
   border-right: 2px solid rgb(190, 187, 187);
   padding-right: 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+   font-size: 18px;
+  
 }
 .overview-stats div {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
 }
 
 .activity {

@@ -5,131 +5,92 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Library Dashboard</title>
   <link rel="stylesheet" href="styles/index.css" />
-  <!-- <link rel="stylesheet" href="/User/responsive-book-website-main/assets/css/styles.css"> -->
 </head>
 <body>
   <div class="app">
-     <div class="app">
     <aside class="sidebar-left">
       <h2> Library App</h2>
       <ul>
         <li class="sidebar-link active"><a href="index.html">Dashboard</a></li>
         <li class="sidebar-link"><a href="Members.html">Members</a></li>
-        <li class="sidebar-link"><a href="add-books.html">Add Books</a></li>
+        <li class="sidebar-link"><a href="All-Books.html">All Books</a></li>
         <li class="sidebar-link"><a href="check-out-books.html">Check-out Books</a></li>
         <li class="sidebar-link"><a href="settings.html">Settings</a></li>
-        <!-- <li class="sidebar-link"><a href="help.html">Help</a></li> -->
       </ul>
     </aside>
     <div class="container">
-    <main class="main">
-      <section class="overview">
-        <div class="overview-stats">
-          <div class="Totalbm">
-          <div >
-            <p>Total Books</p><h3>32,245</h3>
+      <main class="main">
+        <aside class="sidebar">
+          <div class="stat-box">
+            <p>Total Books</p><h2>1,534</h2>
           </div>
-          <div>
-           <p>New Members</p><h3>150</h3>
-        </div>
-        </div>
-        <div class="bookss">
-         <div>
-            <p>Books Checked Out</p><h3>2,045</h3>
+          <div class="stat-box">
+            <p>Available Books</p><h2>783</h2>
           </div>
-        <div>
-            <p>Overdue Books</p><h3>34</h3>
-         </div>
-        </div>
-         <canvas id="chart" width="700" height="200"></canvas>
-      </section>
-      
+          <div class="stat-box">
+            <p>New Members</p><h2>45</h2>
+          </div>
+          <div class="stat-box">
+            <p>Total Members</p><h2>31,945</h2>
+          </div>
+          <div class="stat-box">
+            <p>Books Checked In</p><h2>12</h2>
+          </div>
+        </aside>
 
-      <section class="activity">
-        <h2>Recent Activity</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th><th>Member</th><th>Title</th><th>Author</th><th>Borrowed</th><th>Due</th><th>Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>1057</td><td>Jacok Miller</td><td><em>Arther Rivers</em></td><td>Amr Bd Ehrs</td><td>4/18/2021</td><td>11134</td><td><span class="returned">Returned</span></td></tr>
-            <tr><td>1043</td><td>Aaliyah Smith</td><td><em>Book in the Shref</em></td><td>Sir dar Gaels</td><td>10/17/2020</td><td>783</td><td><span class="overdue">Overdue</span></td></tr>
-            <tr><td>1042</td><td>Samuel Clark</td><td><em>The Wrtch</em></td><td>Book Hunter</td><td>10/15/2020</td><td>45</td><td><span class="borrowed">Borrowed</span></td></tr>
-            <tr><td>1061</td><td>Olivia Parker</td><td><em>Flew the load</em></td><td>Sam Barbsr</td><td>10/28/2020</td><td>31,545</td><td><span class="borrowed">Borrowed</span></td></tr>
-            <tr><td>1060</td><td>Isabelly Johnson</td><td><em>Readine</em></td><td>Bamis Brown</td><td>8/25/2020</td><td>0759</td><td><span class="returned">Returned</span></td></tr>
-            <tr><td>1048</td><td>Ethan Williams</td><td><em>A Bright More</em></td><td>Noah Brown</td><td>8/28/2020</td><td>12</td><td><span class="overuse">Overuse</span></td></tr>
-          </tbody>
-        </table>
-      </section>
+        <section class="overview">
+          <div class="overview-stats">
+            <div class="Totalbm">
+              <div>
+                <p>Overdue Books</p><h3>32,245</h3>
+              </div>
+            </div>
+            <div class="bookss">
+              <div>
+                <p>Books Checked Out</p><h3>2,045</h3>
+              </div>
+            </div>
+          </div>
+          <canvas id="chart" width="700" height="200"></canvas>
+        </section>
 
-      <section class="activity">
-        <h2>Returned Title</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th><th>Title</th><th>Author</th><th>Borrowed</th><th>Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>0091</td><td><em>Reading Facts</em></td><td>Judah Samuel</td><td>Returned</td><td><span class="returned">Returned</span></td></tr>
-            <tr><td>0002</td><td><em>Book Club</em></td><td>Samuel Clark</td><td>Overdue</td><td><span class="borrowed">Borrowed</span></td></tr>
-          </tbody>
-        </table>
-      </section>
-    </main>
-    <aside class="sidebar">
-      <input type="text" placeholder="Search..." class="search-bar" />
-      <!-- <button id="theme-toggle" style="margin-bottom: 1em;">Toggle Dark Theme</button> -->
-      <div class="stat-box">
-        <p>Total Members</p><h2>1,534</h2>
-      </div>
-      <div class="stat-box">
-        <p>Active Checkouts</p><h2>783</h2>
-      </div>
-      <div class="stat-box">
-        <p>Overdue Books</p><h2>45</h2>
-      </div>
-      <div class="stat-box">
-        <p>Available Books</p><h2>31,945</h2>
-      </div>
-      <div class="stat-box">
-        <p>Books Checked In</p><h2>12</h2>
-      </div>
-    </aside>
-  </div>
+        <section class="activity">
+          <h2>Recent Activity</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th><th>Member</th><th>Title</th><th>Author</th><th>Borrowed</th><th>Due</th><th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>1057</td><td>Jacok Miller</td><td><em>Arther Rivers</em></td><td>Amr Bd Ehrs</td><td>4/18/2021</td><td>11134</td><td><span class="returned">Returned</span></td></tr>
+              <tr><td>1043</td><td>Aaliyah Smith</td><td><em>Book in the Shref</em></td><td>Sir dar Gaels</td><td>10/17/2020</td><td>783</td><td><span class="overdue">Overdue</span></td></tr>
+              <tr><td>1042</td><td>Samuel Clark</td><td><em>The Wrtch</em></td><td>Book Hunter</td><td>10/15/2020</td><td>45</td><td><span class="borrowed">Borrowed</span></td></tr>
+              <tr><td>1061</td><td>Olivia Parker</td><td><em>Flew the load</em></td><td>Sam Barbsr</td><td>10/28/2020</td><td>31,545</td><td><span class="borrowed">Borrowed</span></td></tr>
+              <tr><td>1060</td><td>Isabelly Johnson</td><td><em>Readine</em></td><td>Bamis Brown</td><td>8/25/2020</td><td>0759</td><td><span class="returned">Returned</span></td></tr>
+              <tr><td>1048</td><td>Ethan Williams</td><td><em>A Bright More</em></td><td>Noah Brown</td><td>8/28/2020</td><td>12</td><td><span class="overuse">Overuse</span></td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="activity">
+          <h2>Returned Title</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th><th>Title</th><th>Author</th><th>Borrowed</th><th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>0091</td><td><em>Reading Facts</em></td><td>Judah Samuel</td><td>Returned</td><td><span class="returned">Returned</span></td></tr>
+              <tr><td>0002</td><td><em>Book Club</em></td><td>Samuel Clark</td><td>Overdue</td><td><span class="borrowed">Borrowed</span></td></tr>
+            </tbody>
+          </table>
+        </section>
+      </main>
+    </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script>
-    // Apply saved theme on every page load
-    (function() {
-      const theme = localStorage.getItem('theme') || 'light';
-      document.body.classList.add(theme);
-    })();
-
-    // Theme toggle button logic
-    document.addEventListener('DOMContentLoaded', function() {
-      const btn = document.getElementById('theme-toggle');
-      btn.addEventListener('click', function() {
-        const isDark = document.body.classList.toggle('dark');
-        document.body.classList.toggle('light', !isDark);
-        localStorage.setItem('theme', isDark ? 'dark' : 'light');
-      });
-    });
-
-    // Highlight active sidebar link
-    document.addEventListener('DOMContentLoaded', function() {
-      const links = document.querySelectorAll('.sidebar-link a');
-      links.forEach(link => {
-        if (window.location.pathname.endsWith(link.getAttribute('href'))) {
-          link.parentElement.classList.add('active');
-        } else {
-          link.parentElement.classList.remove('active');
-        }
-      });
-    });
-  </script>
   <script src="scripts/index.js"></script>
 </body>
 </html>

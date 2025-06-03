@@ -1,0 +1,88 @@
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    width:600px ;
+    border-radius: 12px;
+}
+
+.modal-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-content label {
+    margin-top: 10px;
+}
+
+.modal-content input {
+    margin-bottom: 10px;
+    border-radius: 10px;
+    padding: 5px;
+    width: 100%;
+}
+
+button.green {
+    background-color: hsl(230, 62%, 56%);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+button.green:hover {
+      background-color: hsl(230, 79%, 41%);
+}
+
+button#closeModal {
+    margin-top: 10px;
+    background-color: #ce574f;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: opacity 0.3s ease;
+}
+
+button#closeModal:hover {
+   background-color: #cf180b;
+}
+
+/* Section header styling */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.section-header h2 {
+    margin: 0;
+    font-size: 1.8rem;
+    color: hsl(230, 62%, 56%);
+}
+
+.section-header button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 6px;
+    background-color: hsl(230, 62%, 56%);
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.section-header button:hover {
+    background-color: hsl(230, 72%, 46%);
+}

@@ -13,7 +13,7 @@
             <ul>
             <li class="sidebar-link active"><a href="index.html">Dashboard</a></li>
             <li class="sidebar-link"><a href="Members.html">Members</a></li>
-            <li class="sidebar-link"><a href="add-books.html">Add Books</a></li>
+            <li class="sidebar-link"><a href="All-Books.html">All Books</a></li>
             <li class="sidebar-link"><a href="check-out-books.html">Check-out Books</a></li>
             <li class="sidebar-link"><a href="settings.html">Settings</a></li>
             <!-- <li class="sidebar-link"><a href="help.html">Help</a></li> -->
@@ -37,7 +37,7 @@
                     <div class="member-actions">
                         <input type="text" placeholder="Search Member">
                         <button class="green">Add Members</button>
-                        <button>Import</button>
+                        <button>Export</button>
                     </div>
                 </div>
 
@@ -48,15 +48,66 @@
                             <th>Register ID</th>
                             <th>Member</th>
                             <th>Email ID</th>
+                            <th>Phone Number</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody id="memberTableBody">
-                        <!-- Populated by JS -->
+                        <!-- Rows will be dynamically added here -->
                     </tbody>
                 </table>
             </section>
         </main>
+    </div>
+    
+    <div id="addMemberModal" class="modal">
+        <div class="modal-content">
+            <h3>Add Member</h3>
+            <form id="addMemberForm">
+                <label for="memberId">Member ID:</label>
+                <input type="text" id="memberId" required />
+                
+                <label for="registerId">Register ID:</label>
+                <input type="text" id="registerId" required />
+                
+                <label for="memberName">Member Name:</label>
+                <input type="text" id="memberName" required />
+                
+                <label for="emailId">Email ID:</label>
+                <input type="email" id="emailId" required />
+                
+                <label for="phoneNumber">Phone Number:</label>
+                <input type="text" id="phoneNumber" required />
+                
+                <button type="submit" class="green">Add Member</button>
+            </form>
+            <button id="closeModal">Close</button>
+        </div>
+    </div>
+
+    <div id="editMemberModal" class="modal">
+        <div class="modal-content">
+            <h3>Edit Member</h3>
+            <form id="editMemberForm">
+                <label for="editMemberId">Member ID:</label>
+                <input type="text" id="editMemberId" readonly />
+
+                <label for="editRegisterId">Register ID:</label>
+                <input type="text" id="editRegisterId" required />
+
+                <label for="editMemberName">Member Name:</label>
+                <input type="text" id="editMemberName" required />
+
+                <label for="editEmailId">Email ID:</label>
+                <input type="email" id="editEmailId" required />
+
+                <label for="editPhoneNumber">Phone Number:</label>
+                <input type="text" id="editPhoneNumber" required />
+
+                <button type="submit" class="green">Save Changes</button>
+            </form>
+            <button id="closeEditModal">Close</button>
+        </div>
     </div>
     
 <script>

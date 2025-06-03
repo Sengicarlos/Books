@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Books</title>
+    <link rel="stylesheet" href="styles/members.css">
+    <link rel="stylesheet" href="styles/All-Books.css">
+</head>
+<body>
+    <div class="app">
+        <aside class="sidebar">
+            <h2>Library App</h2>
+            <ul>
+                <li class="sidebar-link"><a href="index.html">Dashboard</a></li>
+                <li class="sidebar-link"><a href="Members.html">Members</a></li>
+                <li class="sidebar-link active"><a href="All-Books.html">All Books</a></li>
+                <li class="sidebar-link"><a href="check-out-books.html">Check-out Books</a></li>
+                <li class="sidebar-link"><a href="settings.html">Settings</a></li>
+                <!-- <li class="sidebar-link"><a href="help.html">Help</a></li> -->
+            </ul>
+        </aside>
+        <div class="main-content">
+            <header>
+                <input type="text" id="searchBar" placeholder="Search books...">
+                <button class="green" id="addBookBtn">Add Book</button>
+            </header>
+            <section class="book-section">
+                <h2>All Books</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Book Title</th>
+                            <th>Author</th>
+                            <th>ISBN</th>
+                            <th>No. of Copies</th>
+                            <th>Book Image</th>
+                            <th>Book PDF</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="bookTableBody">
+                        <!-- Dynamic rows will be added here -->
+                    </tbody>
+                </table>
+            </section>
+        </div>
+    </div>
+
+    <!-- Modal for adding books -->
+    <div class="modal" id="addBookModal">
+        <div class="modal-content">
+            <h3>Add New Book</h3>
+            <label for="bookTitle">Book Title:</label>
+            <input type="text" id="bookTitle" placeholder="Enter book title">
+            <label for="bookAuthor">Author:</label>
+            <input type="text" id="bookAuthor" placeholder="Enter author name">
+            <label for="bookISBN">ISBN:</label>
+            <input type="text" id="bookISBN" placeholder="Enter ISBN">
+            <label for="bookCopies">No. of Copies:</label>
+            <input type="number" id="bookCopies" placeholder="Enter number of copies">
+            <label for="bookImage">Book Image URL:</label>
+            <input type="text" id="bookImage" placeholder="Enter image URL">
+            <label for="bookPDF">Book PDF URL:</label>
+            <input type="text" id="bookPDF" placeholder="Enter PDF URL">
+            <button class="green" id="saveBookBtn">Save</button>
+            <button id="closeModal">Cancel</button>
+        </div>
+    </div>
+
+    <script src="scripts/All-Books.js"></script>
+</body>
+</html>

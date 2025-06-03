@@ -130,6 +130,7 @@ table {
     border-collapse: collapse;
     background: #fff;
     box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    border-radius: 10px;
 }
 
 table th, table td {
@@ -153,4 +154,107 @@ table th, table td {
 .action-buttons .cancel {
     background-color: #f67a7a;
     color: white;
+}
+
+button.edit-btn {
+    background-color: #d1d1e9;
+    color: black;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+button.delete-btn {
+    background-color: #f67a7a;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+     border-radius: 10px;
+}
+
+button.edit-btn:hover, button.delete-btn:hover {
+    opacity: 0.8;
+}
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.modal-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-content label {
+    margin-top: 10px;
+}
+
+.modal-content input {
+    margin-bottom: 10px;
+    padding: 5px;
+    width: 100%;
+}
+
+button.green {
+    background-color:  hsl(230, 62%, 56%);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+button.green:hover {
+    opacity: 0.8;
+}
+
+button#closeModal {
+    margin-top: 10px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+button#closeModal:hover {
+    opacity: 0.8;
+}
+
+/* Section header styling */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.section-header h2 {
+    margin: 0;
+    font-size: 1.8rem;
+    color: hsl(230, 62%, 56%);
+}
+
+.section-header button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 6px;
+    background-color: hsl(230, 62%, 56%);
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.section-header button:hover {
+    background-color: hsl(230, 72%, 46%);
 }
