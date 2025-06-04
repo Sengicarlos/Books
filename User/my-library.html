@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/User/responsive-book-website-main/assets/css/styles.css">
+    <link rel="stylesheet" href="/User/responsive-book-website-main/assets/css/Borrow-Books.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
 </head>
 <body>
@@ -72,6 +72,52 @@
 </form>
 <i class="ri-close-line search__close" id="search-close"></i>
 </div>
+
+<!-- ================home=============== -->
+ <section class="home section" id="home">
+            <div class="home__container container grid">
+   <h1>Student Book Borrowing</h1>
+
+  <div class="header1">
+    <input type="text" id="isbn" placeholder="Enter Barcode" />
+    <input type="text" id="title" placeholder="Book Title" />
+    <input type="text" id="author" placeholder="Book Author" />
+    <input type="text" id="imageUrl" placeholder="Book Image URL" />
+    <input type="date" id="returnDate" placeholder="Return Date" />
+    <button onclick="startScanner()">Scan</button>
+    <button onclick="borrowBook()">Borrow</button>
+  </div>
+
+  <div class="scanner1">
+
+  </div>
+  <div class="scanner">
+    <!-- <img src="/User/responsive-book-website-main/assets/img/Barcode-PNG.png" width="100%" height="400px"> -->
+     <!-- <button onclick="startScanner()">Scan ISBN</button> -->
+  </div>
+
+  <!-- <div id="barcodeContainer" style="margin-top:2px;"></div> -->
+  <div id="scanner"></div>
+
+  <table>
+    <h1>Books Status</h1>
+    <thead>
+      <tr>
+        <th>Image</th>
+        <th>Title</th>
+        <th>Author</th>
+        <th>ISBN</th>
+        <th>Borrowed At</th>
+        <th>Return Date</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody id="bookTableBody"></tbody>
+  </table>
+      </div>
+
+   </section>
 
     
 </body>

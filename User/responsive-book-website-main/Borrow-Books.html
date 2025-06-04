@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Student Book Borrowing</title>
+  <link rel="stylesheet" href="/User/responsive-book-website-main/assets/css/Borrow-Books.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html5-qrcode/2.3.8/html5-qrcode.min.js" integrity="sha512-r6rDA7W6ZeQhvl8S7yRVQUKVHdexq+GAlNkNNqVC7YyIV+NwqCTJe2hDWCiffTyRNOeGEzRRJ9ifvRm/HCzGYg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+   <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
+
+      <!--=============== REMIXICONS ===============-->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css">
+ 
+</head>
+<body>
+   <!--==================== HEADER ====================-->
+      <header class="header" id="header">
+         <nav class="nav container">
+            <a href="#" class="nav__logo">
+               <i class="ri-book-3-line">Must Library</i>
+            </a>
+
+            <div class="nav__menu">
+               <ul class="nav__list">
+                  <li class="nav__item">
+                     <a href="index.html" class="nav__link">
+                        <i class="ri-home-line"></i>
+                        <span>Home</span>
+                     </a>
+                  </li>
+
+                  <li class="nav__item">
+                     <a href="all-books.html" class="nav__link">
+                        <i class="ri-book-3-line"></i>
+                        <span>All Book</a></span>
+                     </a>
+                  </li>
+
+                  <li class="nav__item">
+                     <a href="my-dashboard.html" class="nav__link">
+                     <i class="ri-dashboard-line"></i>
+                        <span>My Dashboard</span>
+                     </a>
+                  </li>
+
+                  <li class="nav__item">
+                     <a href="#" class="nav__link">
+                       <i class="ri-bookmark-3-line"></i>
+                        <span>My Library</span>
+                     </a>
+                  </li>
+
+                  <li class="nav__item">
+                     <a href="Borrow-Books.html" class="nav__link">
+                        <i class="ri-health-book-line"></i>
+                        <span>Borrow Books</span>
+                     </a>
+                  </li>
+               </ul>
+            </div>
+            <div class="nav__action">
+               <!-- search -->
+                <i class="ri-search-line search-button" id="search-button"></i>
+
+                <!-- login button -->
+                 <i class="ri-user-line login-button" id="login-button"></i>
+               <!-- Them button -->
+                <i class="ri-moon-line change-them" id="theme-button"></i>
+            </div>
+         </nav>
+      </header>
+
+<main>
+   <h1>Student Book Borrowing</h1>
+
+  <div class="header1">
+    <input type="text" id="isbn" placeholder="Enter Barcode" />
+    <input type="text" id="title" placeholder="Book Title" />
+    <input type="text" id="author" placeholder="Book Author" />
+    <input type="text" id="imageUrl" placeholder="Book Image URL" />
+    <input type="date" id="returnDate" placeholder="Return Date" />
+    <button onclick="startScanner()">Scan</button>
+    <button onclick="borrowBook()">Borrow</button>
+  </div>
+
+  <div class="scanner1">
+
+  </div>
+  <div class="scanner">
+    <!-- <img src="/User/responsive-book-website-main/assets/img/Barcode-PNG.png" width="100%" height="400px"> -->
+     <!-- <button onclick="startScanner()">Scan ISBN</button> -->
+  </div>
+
+  <!-- <div id="barcodeContainer" style="margin-top:2px;"></div> -->
+  <div id="scanner"></div>
+
+  <table>
+    <h1>Books Status</h1>
+    <thead>
+      <tr>
+        <th>Image</th>
+        <th>Title</th>
+        <th>Author</th>
+        <th>ISBN</th>
+        <th>Borrowed At</th>
+        <th>Return Date</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody id="bookTableBody"></tbody>
+  </table>
+
+</main>
+
+  <!-- Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
+  <script src="https://unpkg.com/html5-qrcode@2.3.10/minified/html5-qrcode.min.js"></script>
+
+ 
+  <script>
+    let borrowedBooks = [];
+
+    // Load book data from localStorage (simulating a local database)
+    const bookDatabase = JSON.parse(localStorage.getItem("bookDB")) || {
+      "9780134477367": {
+        title: "Clean Code",
+        author: "Robert C. Martin",
+        imageUrl: "https://images-na.ssl-images-amazon.com/images/I/41xShlnTZTL._SX374_BO1,204,203,200_.jpg",
+        returnDate: "2025-07-01"
+      }
+    };
+
+    function borrowBook(data = null) {
+      const isbn = data?.isbn || document.getElementById('isbn').value.trim();
+      const title = data?.title || document.getElementById('title').value.trim();
+      const author = data?.author || document.getElementById('author').value.trim();
+      const imageUrl = data?.imageUrl || document.getElementById('imageUrl').value.trim();
+      const returnDate = data?.returnDate || document.getElementById('returnDate').value;
+
+      if (!isbn || !title || !author || !imageUrl || !returnDate) {
+        alert("Please fill all fields or scan a valid ISBN.");
+        return;
+      }
+
+      const book = {
+        id: Date.now(),
+        isbn,
+        title,
+        author,
+        imageUrl,
+        returnDate,
+        borrowedAt: new Date().toLocaleString(),
+        status: 'Borrowed'
+      };
+
+      borrowedBooks.push(book);
+      renderTable();
+      showBarcode(isbn);
+      if (!data) clearFields();
+    }
+
+    function renderTable() {
+      const tbody = document.getElementById('bookTableBody');
+      tbody.innerHTML = '';
+      borrowedBooks.forEach(book => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td><img src="${book.imageUrl}" alt="cover"></td>
+          <td>${book.title}</td>
+          <td>${book.author}</td>
+          <td>${book.isbn}</td>
+          <td>${book.borrowedAt}</td>
+          <td>${book.returnDate}</td>
+          <td class="${book.status.toLowerCase()}">${book.status}</td>
+          <td>
+            ${book.status === 'Borrowed' ? 
+              `<button onclick="markReturned(${book.id})">Mark as Returned</button>` : 
+              ''}
+          </td>
+        `;
+        tbody.appendChild(row);
+      });
+    }
+
+    function markReturned(id) {
+      borrowedBooks = borrowedBooks.map(book =>
+        book.id === id ? { ...book, status: 'Returned' } : book
+      );
+      renderTable();
+    }
+
+    function showBarcode(isbn) {
+      const barcodeContainer = document.getElementById('barcodeContainer');
+      barcodeContainer.innerHTML = '<svg id="barcode"></svg>';
+      JsBarcode("#barcode", isbn, { format: "EAN13", lineColor: "#000", width: 2, height: 50 });
+    }
+
+    function clearFields() {
+      ['isbn', 'title', 'author', 'imageUrl', 'returnDate'].forEach(id => {
+        document.getElementById(id).value = '';
+      });
+    }
+
+    // Start the QR/Barcode scanner
+    function startScanner() {
+      const scannerDiv = document.getElementById("scanner");
+      scannerDiv.style.display = "block";
+
+      const html5QrCode = new Html5Qrcode("scanner");
+      html5QrCode.start(
+        { facingMode: "environment" },
+        { fps: 10, qrbox: 250 },
+        (decodedText) => {
+          html5QrCode.stop();
+          scannerDiv.innerHTML = '';
+          scannerDiv.style.display = "none";
+          if (bookDatabase[decodedText]) {
+            borrowBook({ isbn: decodedText, ...bookDatabase[decodedText] });
+          } else {
+            alert("ISBN not found in local database.");
+          }
+        },
+        (err) => {
+          console.warn("Scan error", err);
+        }
+      ).catch(err => {
+        console.error("Scanner start error:", err);
+      });
+    }
+
+    // Save initial bookDatabase to localStorage
+    localStorage.setItem("bookDB", JSON.stringify(bookDatabase));
+  </script>
+</body>
+</html>

@@ -7,9 +7,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const editMemberModal = document.getElementById('editMemberModal');
     const editMemberForm = document.getElementById('editMemberForm');
     const closeEditModalButton = document.getElementById('closeEditModal');
+    const deleteConfirmModal = document.getElementById('deleteConfirmModal');
+    const cancelDeleteButton = document.getElementById('cancelDelete');
+    const confirmDeleteButton = document.getElementById('confirmDelete');
 
     // Load members from localStorage or initialize an empty array
     let members = JSON.parse(localStorage.getItem('members')) || [];
+    let memberToDeleteIndex = null; // Store the index of the member to delete
 
     // Function to save members to localStorage
     const saveToLocalStorage = () => {
@@ -44,11 +48,16 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
+    // Function to generate a unique Member ID
+    const generateMemberId = () => {
+        return `M-${Date.now()}`; // Example: M-1622547800000
+    };
+
     // Handle Add Member form submission
     addMemberForm.addEventListener('submit', (event) => {
         event.preventDefault();
         const newMember = {
-            memberId: document.getElementById('memberId').value,
+            memberId: generateMemberId(), // Automatically generate Member ID
             registerId: document.getElementById('registerId').value,
             name: document.getElementById('memberName').value,
             email: document.getElementById('emailId').value,
@@ -94,13 +103,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Handle Delete action
     const handleDelete = (event) => {
-        const index = event.target.dataset.index;
-        if (confirm('Are you sure you want to delete this member?')) {
-            members.splice(index, 1);
-            saveToLocalStorage(); // Save to localStorage
-            renderMembers();
-        }
+        memberToDeleteIndex = event.target.dataset.index; // Store the index
+        deleteConfirmModal.style.display = 'flex'; // Show the modal
     };
+
+    // Confirm Delete
+    confirmDeleteButton.addEventListener('click', () => {
+        if (memberToDeleteIndex !== null) {
+            members.splice(memberToDeleteIndex, 1); // Remove the member
+            saveToLocalStorage(); // Save to localStorage
+            renderMembers(); // Re-render the table
+            memberToDeleteIndex = null; // Reset the index
+        }
+        deleteConfirmModal.style.display = 'none'; // Hide the modal
+    });
+
+    // Cancel Delete
+    cancelDeleteButton.addEventListener('click', () => {
+        memberToDeleteIndex = null; // Reset the index
+        deleteConfirmModal.style.display = 'none'; // Hide the modal
+    });
 
     // Open Add Member modal
     addMemberButton.addEventListener('click', () => {

@@ -1,68 +1,94 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;  
-    background-color: hsl(230, 50%, 90%);
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: hsl(230, 50%, 90%);
 }
 
 .app {
     display: flex;
     height: 100vh;
 }
-
-.sidebar{
+.sidebar-left {
   width: 220px;
   background: hsl(230, 50%, 90%);
   border-right: 1px solid #e0e0e0;
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Full height of the viewport */
 }
 
-.sidebar h2{
-  color: hsl(230, 62%, 56%);
-  font-size: 1.8rem;
-}
-
-.sidebar ul {
+.sidebar-left ul {
   list-style: none;
   padding: 0;
 }
 
-.sidebar li {
-    margin: 3px 0px ;
-    /* padding: 10px 0; */
-    cursor: pointer;
+.sidebar-left li {
+  margin: 3px 0px;
+  cursor: pointer;
 }
 
-.sidebar .active,
-.sidebar .active a {
-    color: white !important;
-    background-color:  hsl(230, 62%, 56%);
-    /* padding: 10px 20px; */
-    border-radius: 5px;
-    display: block;
-}
-
-.sidebar li a{
-    text-decoration: none;
-    color: black;
-    font-size: 16px;
-    padding: 10px 20px;
-    border-radius: 5px;
-    transition: .1s;
-    display: block;
-} 
-/* Hover effect for sidebar links */
-.sidebar li a:hover{
-    color: white;
-    background-color:  hsl(230, 62%, 56%);
-    padding-left: 20px;
-    border-radius: 5px;
-    text-decoration: none;
-}
-/* .sidebar-left h2{
-  font-size: 18px;
+.sidebar-left h2 {
+  color: hsl(230, 62%, 56%);
+  /* font-size: 1.8rem; */
+  text-align: center;
   margin-bottom: 20px;
-} */
+}
 
+.sidebar-left .active,
+.sidebar-left .active a {
+  color: white !important;
+  background-color: hsl(230, 62%, 56%);
+  border-radius: 5px;
+  display: block;
+}
+
+.sidebar-left li a {
+  text-decoration: none;
+  color: black;
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: 0.1s;
+  display: block;
+}
+
+.sidebar-left li a:hover {
+  color: white;
+  background-color: hsl(230, 62%, 56%);
+  /* padding-left: 20px; */
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.sidebar-footer {
+  margin-top: auto; /* Push the footer to the bottom */
+  text-align: center;
+  padding: 10px 0;
+  background-color: hsl(230, 50%, 90%);
+  border-top: 1px solid #e0e0e0;
+}
+
+.logoff-button {
+  display: inline-block;
+  text-decoration: none;
+  color: white;
+  background-color: rgb(203, 109, 109);
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  width: 80%;
+}
+
+.logoff-button:hover {
+  background-color: darkred;
+}
 
 .main-content {
     flex-grow: 1;
@@ -184,10 +210,11 @@ button.edit-btn:hover, button.delete-btn:hover {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: white;
+    background-color: hsl(230, 50%, 90%);
     padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
     z-index: 1000;
+    border-radius: 12px;
 }
 
 .modal-content {
@@ -198,11 +225,18 @@ button.edit-btn:hover, button.delete-btn:hover {
 .modal-content label {
     margin-top: 10px;
 }
-
+h3{
+    text-align: center;
+    color: hsl(230, 62%, 56%);
+    margin-bottom: 10px;
+}
 .modal-content input {
     margin-bottom: 10px;
     padding: 5px;
     width: 100%;
+    background-color: white;
+    border: none;
+    border-radius: 5px;
 }
 
 button.green {
@@ -211,12 +245,26 @@ button.green {
     border: none;
     padding: 10px;
     cursor: pointer;
+      border-radius: 5px;
 }
 
 button.green:hover {
     opacity: 0.8;
 }
 
+button#closeEditModal {
+    margin-top: 10px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button#closeEditModal:hover {
+    opacity: 0.8;
+}
 button#closeModal {
     margin-top: 10px;
     background-color: #f44336;
@@ -224,12 +272,76 @@ button#closeModal {
     border: none;
     padding: 10px;
     cursor: pointer;
+      border-radius: 5px;
 }
 
 button#closeModal:hover {
     opacity: 0.8;
 }
+/* delete model2 */
+.modal2 {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
 
+.modal-content2 {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 300px;
+}
+
+.modal-content2 h3 {
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+}
+
+.modal-content2 p {
+    margin-bottom: 20px;
+    font-size: 1rem;
+    color: #555;
+}
+
+.modal-actions2 {
+    display: flex;
+    justify-content: space-between;
+}
+
+.button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.button.red {
+    background-color: #e74c3c;
+    color: #fff;
+}
+
+.button.red:hover {
+    background-color: #c0392b;
+}
+
+.button {
+    background-color: hsl(230, 62%, 56%);
+    color: #fff;
+}
+
+.button:hover {
+    background-color: #2980b9;
+}
 /* Section header styling */
 .section-header {
     display: flex;

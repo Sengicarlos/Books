@@ -1,0 +1,88 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #e9ecef; /* Match the background color of login.css */
+}
+
+.signup-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;;
+    background-color: hsl(230, 50%, 90%);
+}
+
+.form-container {
+    background-color: #ffffff; /* Match the form background color */
+    padding: 30px; /* Adjust padding for consistency */
+    border-radius: 10px; /* Match border radius */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Match shadow effect */
+    width: 100%;
+    max-width: 400px;
+}
+a{
+    text-decoration: none;
+    color: hsl(230, 62%, 56%);
+      font-weight: bold;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: hsl(230, 62%, 56%);
+}
+
+form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #495057; /* Match label text color */
+}
+
+form input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ced4da; /* Match input border color */
+    border-radius: 5px; /* Match input border radius */
+    font-size: 14px;
+}
+.buttons{
+    display: flex;
+    justify-content: space-between;
+    gap: 2px;
+    margin-bottom: 20px; /* Adjust margin for spacing */
+}
+form button {
+    width: 100%;
+    padding: 12px;
+    background-color: hsl(230, 62%, 56%); /* Match button background color */
+    color: #ffffff;
+    border: none;
+    border-radius: 5px; /* Match button border radius */
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+form button:hover {
+    background-color: hsl(230, 62%, 56%); /* Match hover effect */
+    box-shadow: ;
+}
+
+form p {
+    text-align: center;
+    margin-top: 15px;
+    color: #6c757d; /* Match paragraph text color */
+}
+
+form a {
+    color: #007bff; /* Match link color */
+    text-decoration: none;
+}
+
+form a:hover {
+    text-decoration: underline; /* Match hover effect for links */
+}

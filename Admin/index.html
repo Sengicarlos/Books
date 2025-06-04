@@ -9,14 +9,18 @@
 <body>
   <div class="app">
     <aside class="sidebar-left">
-      <h2> Library App</h2>
+      <div>
+         <h2> Must Library Management System</h2>
       <ul>
         <li class="sidebar-link active"><a href="index.html">Dashboard</a></li>
         <li class="sidebar-link"><a href="Members.html">Members</a></li>
         <li class="sidebar-link"><a href="All-Books.html">All Books</a></li>
         <li class="sidebar-link"><a href="check-out-books.html">Check-out Books</a></li>
-        <li class="sidebar-link"><a href="settings.html">Settings</a></li>
       </ul>
+      </div>
+      <div class="sidebar-footer">
+        <a href="/login.html" class="logoff-button">Logout</a>
+      </div>
     </aside>
     <div class="container">
       <main class="main">
@@ -31,7 +35,7 @@
             <p>New Members</p><h2>45</h2>
           </div>
           <div class="stat-box">
-            <p>Total Members</p><h2>31,945</h2>
+            <p>Total Members</p><h2>10,000</h2>
           </div>
           <div class="stat-box">
             <p>Books Checked In</p><h2>12</h2>
@@ -42,7 +46,7 @@
           <div class="overview-stats">
             <div class="Totalbm">
               <div>
-                <p>Overdue Books</p><h3>32,245</h3>
+                <p>Overdue Books</p><h3>680</h3>
               </div>
             </div>
             <div class="bookss">
@@ -90,6 +94,17 @@
       </main>
     </div>
   </div>
+  <!-- Logout Confirmation Modal -->
+<div id="logoutConfirmModal" class="modal">
+    <div class="modal-content">
+        <h3>Confirm Logout</h3>
+        <p>Are you sure you want to log out?</p>
+        <div class="modal-actions">
+            <button id="cancelLogout" class="button">Cancel</button>
+            <button id="confirmLogout" class="button red">Logout</button>
+        </div>
+    </div>
+</div>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="scripts/index.js"></script>
 </body>
