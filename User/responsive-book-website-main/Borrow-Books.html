@@ -77,7 +77,7 @@
     <input type="text" id="isbn" placeholder="Enter Barcode" />
     <input type="text" id="title" placeholder="Book Title" />
     <input type="text" id="author" placeholder="Book Author" />
-    <input type="text" id="imageUrl" placeholder="Book Image URL" />
+    <!-- <input type="text" id="imageUrl" placeholder="Book Image URL" /> -->
     <input type="date" id="returnDate" placeholder="Return Date" />
     <button onclick="startScanner()">Scan</button>
     <button onclick="borrowBook()">Borrow</button>
@@ -105,7 +105,7 @@
         <th>Borrowed At</th>
         <th>Return Date</th>
         <th>Status</th>
-        <th>Action</th>
+        <!-- <th>Action</th> -->
       </tr>
     </thead>
     <tbody id="bookTableBody"></tbody>
@@ -130,58 +130,50 @@
         returnDate: "2025-07-01"
       }
     };
+function borrowBook(data = null) {
+    const isbn = data?.isbn || document.getElementById('isbn').value.trim();
+    const title = data?.title || document.getElementById('title').value.trim();
+    const author = data?.author || document.getElementById('author').value.trim();
+    const returnDate = data?.returnDate || document.getElementById('returnDate').value;
 
-    function borrowBook(data = null) {
-      const isbn = data?.isbn || document.getElementById('isbn').value.trim();
-      const title = data?.title || document.getElementById('title').value.trim();
-      const author = data?.author || document.getElementById('author').value.trim();
-      const imageUrl = data?.imageUrl || document.getElementById('imageUrl').value.trim();
-      const returnDate = data?.returnDate || document.getElementById('returnDate').value;
-
-      if (!isbn || !title || !author || !imageUrl || !returnDate) {
+    if (!isbn || !title || !author || !returnDate) {
         alert("Please fill all fields or scan a valid ISBN.");
         return;
-      }
+    }
 
-      const book = {
+    const book = {
         id: Date.now(),
         isbn,
         title,
         author,
-        imageUrl,
         returnDate,
         borrowedAt: new Date().toLocaleString(),
         status: 'Borrowed'
-      };
+    };
 
-      borrowedBooks.push(book);
-      renderTable();
-      showBarcode(isbn);
-      if (!data) clearFields();
-    }
+    borrowedBooks.push(book);
+    renderTable();
+    showBarcode(isbn);
+    if (!data) clearFields();
+}
 
     function renderTable() {
-      const tbody = document.getElementById('bookTableBody');
-      tbody.innerHTML = '';
-      borrowedBooks.forEach(book => {
-        const row = document.createElement('tr');
-        row.innerHTML = `
-          <td><img src="${book.imageUrl}" alt="cover"></td>
-          <td>${book.title}</td>
-          <td>${book.author}</td>
-          <td>${book.isbn}</td>
-          <td>${book.borrowedAt}</td>
-          <td>${book.returnDate}</td>
-          <td class="${book.status.toLowerCase()}">${book.status}</td>
-          <td>
-            ${book.status === 'Borrowed' ? 
-              `<button onclick="markReturned(${book.id})">Mark as Returned</button>` : 
-              ''}
-          </td>
-        `;
-        tbody.appendChild(row);
-      });
-    }
+  const tbody = document.getElementById('bookTableBody');
+  tbody.innerHTML = '';
+  borrowedBooks.forEach(book => {
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td><img src="${book.imageUrl}" alt="cover"></td>
+      <td>${book.title}</td>
+      <td>${book.author}</td>
+      <td>${book.isbn}</td>
+      <td>${book.borrowedAt}</td>
+      <td>${book.returnDate}</td>
+      <td class="${book.status.toLowerCase()}">${book.status}</td>
+    `;
+    tbody.appendChild(row);
+  });
+}
 
     function markReturned(id) {
       borrowedBooks = borrowedBooks.map(book =>
