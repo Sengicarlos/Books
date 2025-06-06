@@ -223,6 +223,16 @@ padding: 0;
     text-align: center;
 }
 
+.modal h3{
+    text-align: center;
+    color: hsl(230, 62%, 56%);
+    margin-bottom: 10px;
+}
+.modal p {
+    margin: 10px 0;
+    font-size: 16px;
+}
+
 .modal-actions {
     margin-top: 20px;
     display: flex;
@@ -236,15 +246,52 @@ padding: 0;
     cursor: pointer;
 }
 
-.button.red {
-    background-color: #f44336;
+.button.blue{
+   background-color: hsl(230, 62%, 56%);
     color: white;
+    border: none;
+    padding: 12px;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+button.blue:hover {
+    background-color: hsl(230, 72%, 46%);
+    transform: scale(1.05);
+}
+
+button.red {
+    margin-top: 10px;
+    background-color:hsl(0, 85%, 55%);
+    color: white;
+    border: none;
+    padding: 12px;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .button.red:hover {
     background-color: #d32f2f;
+    transform: scale(1.05);
 }
 
-.button:hover {
-    background-color: #e0e0e0;
+
+/* Backdrop overlay */
+.modal-backdrop {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal-backdrop.active {
+    display: block; /* Show when active */
 }

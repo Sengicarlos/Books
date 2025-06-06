@@ -16,14 +16,14 @@
             <form id="signup-form" action="/login.html">
                 <!-- Step 1 -->
                 <div class="form-step" id="step-1">
-                    <label for="member-id">Member ID:</label>
-                    <input type="text" id="member-id" name="member-id" placeholder="Enter Member ID">
+                    <label for="member-names">First Names:</label>
+                    <input type="text" id="member-names" name="member-names" placeholder="Enter Your First Names" required>
+
+                    <label for="member-names">Last Names:</label>
+                    <input type="text" id="member-names" name="member-names" placeholder="Enter Your Last Names" required>
 
                     <label for="registered-id">Registered ID:</label>
                     <input type="text" id="registered-id" name="registered-id" placeholder="Enter Registered ID" required>
-
-                    <label for="member-names">Member Names:</label>
-                    <input type="text" id="member-names" name="member-names" placeholder="Enter Member Names" required>
 
                     <button type="button" id="next-step">Next</button>
                 </div>
@@ -54,37 +54,7 @@
         </div>
     </div>
 </main>
-<script>
-    const nextStepButton = document.getElementById('next-step');
-    const backStepButton = document.getElementById('back-step');
-    const step1 = document.getElementById('step-1');
-    const step2 = document.getElementById('step-2');
-
-    nextStepButton.addEventListener('click', function () {
-        step1.style.display = 'none';
-        step2.style.display = 'block';
-    });
-
-    backStepButton.addEventListener('click', function () {
-        step2.style.display = 'none';
-        step1.style.display = 'block';
-    });
-
-    document.getElementById('signup-form').addEventListener('submit', function (event) {
-        event.preventDefault(); // Prevent form submission
-
-        const password = document.getElementById('password').value;
-        const confirmPassword = document.getElementById('confirm-password').value;
-
-        if (password !== confirmPassword) {
-            alert('Passwords do not match. Please try again.');
-            return;
-        }
-
-        alert('Sign-up successful!');
-        // Redirect or perform further actions
-        window.location.href = '/login.html';
-    });
-</script>
+<script src="/Scripts/Sign-up.js"></script>
+<script src="/Scripts/popup.js"></script>
 </body>
 </html>

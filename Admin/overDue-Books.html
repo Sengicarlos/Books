@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Library App - Check-out Books</title>
+  <link rel="stylesheet" href="styles/overDue-Books.css">
+</head>
+<body>
+  <div class="app">
+   <aside class="sidebar">
+    <div>
+    <h2>Must Library Management System</h2>
+      <ul>
+        <li class="sidebar-link active"><a href="index.html">Dashboard</a></li>
+        <li class="sidebar-link"><a href="Members.html">Members</a></li>
+        <li class="sidebar-link"><a href="All-Books.html">All Books</a></li>
+        <li class="sidebar-link"><a href="check-out-books.html">Check-out Books</a></li>
+        <li class="sidebar-link"><a href="overDue-Books.html">OverDue Books</a></li>
+        <!-- <li class="sidebar-link"><a href="help.html">Help</a></li> -->
+      </ul>
+    </div>
+    <div class="sidebar-footer">
+        <a href="/login.html" class="logoff-button">Logout</a>
+    </div>
+  
+</aside>
+
+    <main>
+      <header class="top-bar">
+        <div class="search-group">
+          <!-- <select>
+                <input type="text" placeholder="Search Ex: ISBN, Title, Author, Member, etc">
+          </select> -->
+          <input type="text" placeholder="Search Ex. ISBN, Title, Author, Member, etc"/>
+        </div>
+      </header>
+
+      <section class="table-section">
+        <table>
+          <thead>
+            <tr>
+              <th>Member ID</th>
+              <th>Member</th>
+              <th>Title</th>
+              <th>Author</th>
+              <th>Borrowed Date</th>
+              <th>Returned Date</th>
+              <th>Status</th>
+              <th>Phone</th>
+            </tr>
+          </thead>
+          <tbody id="bookTableBody">
+            <!-- Rows injected by JS -->
+          </tbody>
+        </table>
+      </section>
+    </main>
+  </div>
+  <script>
+  // ...existing theme code...
+
+  // Highlight active sidebar link
+  document.addEventListener('DOMContentLoaded', function() {
+    const links = document.querySelectorAll('.sidebar-link a');
+    links.forEach(link => {
+      if (window.location.pathname.endsWith(link.getAttribute('href'))) {
+        link.parentElement.classList.add('active');
+      } else {
+        link.parentElement.classList.remove('active');
+      }
+    });
+  });
+</script>
+
+  <script src="scripts/check-out-books.js"></script>
+</body>
+</html>

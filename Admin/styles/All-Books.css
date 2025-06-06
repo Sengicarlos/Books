@@ -217,9 +217,12 @@ button.edit-btn:hover, button.delete-btn:hover {
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: white;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 30px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     z-index: 1000;
+    width: 500px;
+    border-radius: 15px;
+    animation: fadeIn 0.3s ease-in-out;
 }
 
 .modal-content {
@@ -229,24 +232,33 @@ button.edit-btn:hover, button.delete-btn:hover {
 
 .modal-content label {
     margin-top: 10px;
+    font-weight: bold;
+    color: hsl(230, 62%, 46%);
 }
 
 .modal-content input {
-    margin-bottom: 10px;
-    padding: 5px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    padding: 10px;
+    border: 1px solid #ccc;
     width: 100%;
+    font-size: 1rem;
 }
 
 button.green {
-    background-color:  hsl(230, 62%, 56%);
+    background-color: hsl(230, 62%, 56%);
     color: white;
     border: none;
-    padding: 10px;
+    padding: 12px;
     cursor: pointer;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 button.green:hover {
-    opacity: 0.8;
+    background-color: hsl(230, 72%, 46%);
+    transform: scale(1.05);
 }
 
 button#closeModal {
@@ -254,126 +266,37 @@ button#closeModal {
     background-color: #f44336;
     color: white;
     border: none;
-    padding: 10px;
+    padding: 12px;
     cursor: pointer;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 button#closeModal:hover {
-    opacity: 0.8;
+    background-color: #d32f2f;
+    transform: scale(1.05);
 }
 
-/* Section header styling */
-.section-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.section-header h2 {
-    margin: 0;
-    font-size: 1.8rem;
-    color: hsl(230, 62%, 56%);
-}
-
-.section-header button {
-    padding: 10px 20px;
-    font-size: 1rem;
-    border: none;
-    border-radius: 6px;
-    background-color: hsl(230, 62%, 56%);
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.section-header button:hover {
-    background-color: hsl(230, 72%, 46%);
-}
-/* Modal styles */
-.modal {
+/* Backdrop overlay */
+.modal-backdrop {
     display: none;
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
-    width:600px ;
-    border-radius: 12px;
-}
-
-.modal-content {
-    display: flex;
-    flex-direction: column;
-}
-
-.modal-content label {
-    margin-top: 10px;
-}
-
-.modal-content input {
-    margin-bottom: 10px;
-    border-radius: 10px;
-    padding: 5px;
+    top: 0;
+    left: 0;
     width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    animation: fadeIn 0.3s ease-in-out;
 }
 
-button.green {
-    background-color: hsl(230, 62%, 56%);
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    border-radius: 10px;
-}
-
-button.green:hover {
-      background-color: hsl(230, 79%, 41%);
-}
-
-button#closeModal {
-    margin-top: 10px;
-    background-color: #ce574f;
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    border-radius: 10px;
-    transition: opacity 0.3s ease;
-}
-
-button#closeModal:hover {
-   background-color: #cf180b;
-}
-
-/* Section header styling */
-.section-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.section-header h2 {
-    margin: 0;
-    /* font-size: 1.8rem; */
-    color: hsl(230, 62%, 56%);
-}
-
-.section-header button {
-    padding: 10px 20px;
-    /* font-size: 1rem; */
-    border: none;
-    border-radius: 6px;
-    background-color: hsl(230, 62%, 56%);
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.section-header button:hover {
-    background-color: hsl(230, 72%, 46%);
+/* Fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }

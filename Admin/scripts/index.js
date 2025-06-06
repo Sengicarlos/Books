@@ -35,21 +35,29 @@ document.addEventListener('DOMContentLoaded', function () {
   const logoutConfirmModal = document.getElementById('logoutConfirmModal');
   const cancelLogoutButton = document.getElementById('cancelLogout');
   const confirmLogoutButton = document.getElementById('confirmLogout');
+  const modalBackdrop = document.querySelector('.modal-backdrop');
 
   // Show the logout confirmation modal
   logoffButton.addEventListener('click', (event) => {
       event.preventDefault(); // Prevent default link behavior
       logoutConfirmModal.style.display = 'block';
+      modalBackdrop.style.display = 'block'; // Show the backdrop
   });
 
   // Close the modal when cancel is clicked
   cancelLogoutButton.addEventListener('click', () => {
       logoutConfirmModal.style.display = 'none';
+      modalBackdrop.style.display = 'none'; // Hide the backdrop
   });
 
   // Handle logout confirmation
   confirmLogoutButton.addEventListener('click', () => {
       window.location.href = '/login.html'; // Redirect to the login page
+  });
+
+  modalBackdrop.addEventListener('click', () => {
+    logoutConfirmModal.style.display = 'none';
+    modalBackdrop.style.display = 'none';
   });
 });
 

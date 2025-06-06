@@ -17,25 +17,14 @@ if (searchClose) {
     });
 }
 
+
 /*=============== LOGIN ===============*/
-const loginButton = document.getElementById('login-button'),
-      loginClose = document.getElementById('login-close'),
-      loginContent = document.getElementById('login-content');
+const loginButton = document.getElementById("login-button");
+const menu = document.querySelector(".menu");
 
-/* Login show */
-if (loginButton) {
-    loginButton.addEventListener('click', () => {
-        loginContent.classList.add('show__login'); // Corrected class name
-    });
-}
-
-/* Login hidden */
-if (loginClose) {
-    loginClose.addEventListener('click', () => {
-        loginContent.classList.remove('show__login'); // Corrected class name
-    });
-}
-
+loginButton.addEventListener("click", () => {
+    menu.classList.toggle("active");
+});
 
 
 /*=============== ADD SHADOW HEADER ===============*/

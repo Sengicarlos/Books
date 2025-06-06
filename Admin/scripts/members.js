@@ -1,144 +1,207 @@
 document.addEventListener('DOMContentLoaded', () => {
     const memberTableBody = document.getElementById('memberTableBody');
-    const addMemberForm = document.getElementById('addMemberForm');
     const addMemberModal = document.getElementById('addMemberModal');
-    const closeModalButton = document.getElementById('closeModal');
+    const addMemberForm = document.getElementById('addMemberForm');
     const addMemberButton = document.querySelector('.member-actions .green');
+    const closeModalButton = document.getElementById('closeModal');
+
     const editMemberModal = document.getElementById('editMemberModal');
     const editMemberForm = document.getElementById('editMemberForm');
     const closeEditModalButton = document.getElementById('closeEditModal');
+
     const deleteConfirmModal = document.getElementById('deleteConfirmModal');
     const cancelDeleteButton = document.getElementById('cancelDelete');
     const confirmDeleteButton = document.getElementById('confirmDelete');
 
-    // Load members from localStorage or initialize an empty array
-    let members = JSON.parse(localStorage.getItem('members')) || [];
-    let memberToDeleteIndex = null; // Store the index of the member to delete
+    let currentEditId = null;
+    let currentDeleteId = null;
 
-    // Function to save members to localStorage
-    const saveToLocalStorage = () => {
-        localStorage.setItem('members', JSON.stringify(members));
-    };
+    // Fetch and display members
+    async function fetchMembers() {
+        try {
+            const res = await fetch('http://localhost:3000/api/users/all');
+            const users = await res.json();
+            renderMembers(users);
+        } catch (err) {
+            console.error('Failed to load members:', err);
+        }
+    }
 
-    // Function to render members in the table
-    const renderMembers = () => {
-        memberTableBody.innerHTML = ''; // Clear existing rows
-        members.forEach((member, index) => {
+    // Render member rows
+    function renderMembers(users) {
+        memberTableBody.innerHTML = '';
+
+        users.forEach((user, index) => {
             const row = document.createElement('tr');
             row.innerHTML = `
-                <td>${member.memberId}</td>
-                <td>${member.registerId}</td>
-                <td>${member.name}</td>
-                <td>${member.email}</td>
-                <td>${member.phone}</td>
+                <td>${index + 1}</td>
+                <td>${user.registeredId}</td>
+                <td>${user.firstName} ${user.lastName}</td>
+                <td>${user.email}</td>
+                <td>${user.phone}</td>
                 <td>
-                    <button class="edit-btn" data-index="${index}">Edit</button>
-                    <button class="delete-btn" data-index="${index}">Delete</button>
+                    <button class="edit-button" data-id="${user._id}">Edit</button>
+                    <button class="delete-button" data-id="${user._id}">Delete</button>
                 </td>
             `;
             memberTableBody.appendChild(row);
         });
 
-        // Add event listeners for buttons
-        document.querySelectorAll('.edit-btn').forEach(button => {
-            button.addEventListener('click', handleEdit);
-        });
-        document.querySelectorAll('.delete-btn').forEach(button => {
-            button.addEventListener('click', handleDelete);
-        });
-    };
+        document.querySelectorAll('.edit-button').forEach(button =>
+            button.addEventListener('click', openEditModal)
+        );
 
-    // Function to generate a unique Member ID
-    const generateMemberId = () => {
-        return `M-${Date.now()}`; // Example: M-1622547800000
-    };
+        document.querySelectorAll('.delete-button').forEach(button =>
+            button.addEventListener('click', openDeleteModal)
+        );
+    }
 
-    // Handle Add Member form submission
-    addMemberForm.addEventListener('submit', (event) => {
-        event.preventDefault();
-        const newMember = {
-            memberId: generateMemberId(), // Automatically generate Member ID
-            registerId: document.getElementById('registerId').value,
-            name: document.getElementById('memberName').value,
+    // Open edit modal with data
+    async function openEditModal(event) {
+        currentEditId = event.target.dataset.id;
+
+        try {
+            const res = await fetch(`http://localhost:3000/api/users/${currentEditId}`);
+            const user = await res.json();
+
+            document.getElementById('editMemberId').value = currentEditId;
+            document.getElementById('editRegisterId').value = user.registeredId;
+            document.getElementById('editMemberName').value = `${user.firstName} ${user.lastName}`;
+            document.getElementById('editEmailId').value = user.email;
+            document.getElementById('editPhoneNumber').value = user.phone;
+
+            showModal(editMemberModal);
+        } catch (err) {
+            console.error('Error loading member for editing:', err);
+        }
+    }
+
+    // Submit edit form
+    editMemberForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const [firstName, ...lastParts] = document.getElementById('editMemberName').value.split(' ');
+        const lastName = lastParts.join(' ') || '';
+
+        const updatedData = {
+            registeredId: document.getElementById('editRegisterId').value,
+            firstName,
+            lastName,
+            email: document.getElementById('editEmailId').value,
+            phone: document.getElementById('editPhoneNumber').value,
+        };
+
+        try {
+            const res = await fetch(`http://localhost:3000/api/users/${currentEditId}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(updatedData),
+            });
+
+            if (res.ok) {
+                hideModal(editMemberModal);
+                fetchMembers();
+            } else {
+                console.error('Failed to update member');
+            }
+        } catch (err) {
+            console.error('Error updating member:', err);
+        }
+    });
+
+    // Open delete confirmation modal
+    function openDeleteModal(event) {
+        currentDeleteId = event.target.dataset.id;
+        showModal(deleteConfirmModal);
+    }
+
+    // Confirm delete
+    confirmDeleteButton.addEventListener('click', async () => {
+        try {
+            const res = await fetch(`http://localhost:3000/api/users/${currentDeleteId}`, {
+                method: 'DELETE',
+            });
+
+            if (res.ok) {
+                hideModal(deleteConfirmModal);
+                fetchMembers();
+            } else {
+                console.error('Failed to delete member');
+            }
+        } catch (err) {
+            console.error('Error deleting member:', err);
+        }
+    });
+
+    // Cancel delete
+    cancelDeleteButton.addEventListener('click', () => {
+        hideModal(deleteConfirmModal);
+        currentDeleteId = null;
+    });
+
+    // Open Add Member Modal
+    addMemberButton.addEventListener('click', () => {
+        showModal(addMemberModal);
+    });
+
+    // Close Add Member Modal
+    closeModalButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        hideModal(addMemberModal);
+        addMemberForm.reset();
+    });
+
+    // Close Edit Modal
+    closeEditModalButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        hideModal(editMemberModal);
+    });
+
+    // Function to show a modal and activate the backdrop
+    function showModal(modal) {
+        const modalBackdrop = document.querySelector('.modal-backdrop');
+        modal.style.display = 'flex'; // Show the modal
+        modalBackdrop.classList.add('active'); // Activate the backdrop
+    }
+
+    // Function to hide a modal and deactivate the backdrop
+    function hideModal(modal) {
+        const modalBackdrop = document.querySelector('.modal-backdrop');
+        modal.style.display = 'none'; // Hide the modal
+        modalBackdrop.classList.remove('active'); // Deactivate the backdrop
+    }
+
+    // Initial fetch
+    fetchMembers();
+
+    addMemberForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const formData = {
+            firstName: document.getElementById('firstName').value, // Corrected ID
+            lastName: document.getElementById('lastName').value,   // Corrected ID
+            registeredId: document.getElementById('registerId').value,
             email: document.getElementById('emailId').value,
             phone: document.getElementById('phoneNumber').value,
+            password: document.getElementById('password').value,
         };
-        members.push(newMember);
-        saveToLocalStorage(); // Save to localStorage
-        renderMembers();
-        addMemberModal.style.display = 'none'; // Close modal
-        addMemberForm.reset(); // Reset form fields
-    });
 
-    // Handle Edit action
-    const handleEdit = (event) => {
-        const index = event.target.dataset.index;
-        const member = members[index];
+        try {
+            const res = await fetch('http://localhost:3000/api/users/signup', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData),
+            });
 
-        // Populate the form with member data
-        document.getElementById('editMemberId').value = member.memberId;
-        document.getElementById('editRegisterId').value = member.registerId;
-        document.getElementById('editMemberName').value = member.name;
-        document.getElementById('editEmailId').value = member.email;
-        document.getElementById('editPhoneNumber').value = member.phone;
-
-        // Open the modal
-        editMemberModal.style.display = 'block';
-
-        // Handle form submission
-        editMemberForm.onsubmit = (e) => {
-            e.preventDefault();
-            members[index] = {
-                memberId: document.getElementById('editMemberId').value,
-                registerId: document.getElementById('editRegisterId').value,
-                name: document.getElementById('editMemberName').value,
-                email: document.getElementById('editEmailId').value,
-                phone: document.getElementById('editPhoneNumber').value,
-            };
-            saveToLocalStorage(); // Save to localStorage
-            renderMembers();
-            editMemberModal.style.display = 'none';
-        };
-    };
-
-    // Handle Delete action
-    const handleDelete = (event) => {
-        memberToDeleteIndex = event.target.dataset.index; // Store the index
-        deleteConfirmModal.style.display = 'flex'; // Show the modal
-    };
-
-    // Confirm Delete
-    confirmDeleteButton.addEventListener('click', () => {
-        if (memberToDeleteIndex !== null) {
-            members.splice(memberToDeleteIndex, 1); // Remove the member
-            saveToLocalStorage(); // Save to localStorage
-            renderMembers(); // Re-render the table
-            memberToDeleteIndex = null; // Reset the index
+            if (res.ok) {
+                hideModal(addMemberModal);
+                addMemberForm.reset();
+                fetchMembers(); // Refresh the members list
+            } else {
+                console.error('Failed to add member');
+            }
+        } catch (err) {
+            console.error('Error adding member:', err);
         }
-        deleteConfirmModal.style.display = 'none'; // Hide the modal
     });
-
-    // Cancel Delete
-    cancelDeleteButton.addEventListener('click', () => {
-        memberToDeleteIndex = null; // Reset the index
-        deleteConfirmModal.style.display = 'none'; // Hide the modal
-    });
-
-    // Open Add Member modal
-    addMemberButton.addEventListener('click', () => {
-        addMemberModal.style.display = 'block';
-    });
-
-    // Close modal
-    closeModalButton.addEventListener('click', () => {
-        addMemberModal.style.display = 'none';
-    });
-
-    // Close Edit Member modal
-    closeEditModalButton.addEventListener('click', () => {
-        editMemberModal.style.display = 'none';
-    });
-
-    // Initial render
-    renderMembers();
 });

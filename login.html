@@ -6,15 +6,17 @@
     <title>Login</title>
     <link rel="stylesheet" href="styles/styles.css">
     <link rel="stylesheet" href="styles/login.css">
+    <link rel="stylesheet" href="styles/popup.css">
+
 </head>
 <body>
 <main>
 <div class="login-container">
     <div class="form-container">
         <h1>library Login</h1>
-        <form action="/User/responsive-book-website-main/index.html" id="login-form">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" placeholder="Enter Username" required>
+        <form action id="login-form">
+            <label for="username">Email</label>
+            <input type="text" id="username" name="username" placeholder="Enter Your Email" required>
             
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" placeholder="Enter Password" required>
@@ -51,41 +53,8 @@
     </div>
 </div>
 
-<script>
-    // Open the modal when "Admin Login" is clicked
-    document.getElementById('admin-login-link').addEventListener('click', function (event) {
-        event.preventDefault(); // Prevent default link behavior
-        document.getElementById('otp-modal').style.display = 'block';
-    });
+<script src="/Scripts/login.js"></script>
+<script src="/Scripts/popup.js"></script>
 
-    // Close the modal when the close button is clicked
-    document.querySelector('.close-btn').addEventListener('click', function () {
-        document.getElementById('otp-modal').style.display = 'none';
-    });
-
-    // Automatically move focus to the next input box
-    document.querySelectorAll('.otp-box').forEach((input, index, inputs) => {
-        input.addEventListener('input', function () {
-            if (this.value.length === 1 && index < inputs.length - 1) {
-                inputs[index + 1].focus();
-            }
-        });
-    });
-
-    // Handle OTP form submission
-    document.getElementById('otp-form').addEventListener('submit', function (event) {
-        event.preventDefault(); // Prevent form submission
-        const otp = Array.from(document.querySelectorAll('.otp-box'))
-            .map(input => input.value)
-            .join('');
-
-        // Validate OTP (example: check if it's "123456")
-        if (otp === '123456') {
-            window.location.href = '/Admin/index.html'; // Redirect to /index.html
-        } else {
-            alert('Invalid OTP. Please try again.');
-        }
-    });
-</script>
 </body>
 </html>
